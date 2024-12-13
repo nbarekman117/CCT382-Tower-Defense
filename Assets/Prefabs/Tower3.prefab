@@ -100,6 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   cost: 4
+  upgradeLevel: 0
+  upgradeCosts: 00000000000000000000000000000000
+  upgradeDescriptions: []
   damage: 2
   prefab_shootItem: {fileID: 1282590824706437793, guid: fe40418dc67bc9d45a10a7f220170031,
     type: 3}
