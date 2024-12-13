@@ -41,4 +41,15 @@ public class Tower_Pink : Tower
         yield return new WaitForSeconds(0.5f);
         obj_coin.SetActive(false);
     }
+
+    public override void Init(Vector3Int cellPos, int id)
+    {
+        base.Init(cellPos, id); // Call the base implementation to set cellPos and towerID
+    }
+
+    public override void Upgrade()
+    {
+        incomeValue += 5; // Increase income per interval
+        Debug.Log("Pink Tower upgraded! New income: " + incomeValue);
+    }
 }

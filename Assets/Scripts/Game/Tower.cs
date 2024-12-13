@@ -6,6 +6,9 @@ public class Tower : MonoBehaviour
 {
     public int health;
     public int cost;
+    public int towerID; // Add this field to identify towers
+
+    
     private Vector3Int cellPosition;
 
 
@@ -14,11 +17,11 @@ public class Tower : MonoBehaviour
         Debug.Log("BASE TOWER");
     }
 
-    public virtual void Init(Vector3Int cellPos)
+    public virtual void Init(Vector3Int cellPos, int id)
     {
         cellPosition = cellPos;
+        towerID = id; // Assign the tower ID here
     }
-
     //Lose Health
     public virtual bool LoseHealth(int amount)
     {
@@ -38,5 +41,11 @@ public class Tower : MonoBehaviour
         Debug.Log("Tower is dead");
         FindObjectOfType<Spawner>().RevertCellState(cellPosition);
         Destroy(gameObject);
+    }
+
+    // Make this method virtual
+    public virtual void Upgrade()
+    {
+        Debug.Log("Base Tower upgraded!");
     }
 }

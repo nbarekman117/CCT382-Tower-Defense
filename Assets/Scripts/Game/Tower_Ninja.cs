@@ -35,4 +35,16 @@ public class Tower_Ninja : Tower
         //Set its values  
         shotItem.GetComponent<ShootItem>().Init(damage);
     }
+
+    public override void Init(Vector3Int cellPos, int id)
+    {
+        base.Init(cellPos, id); // Call the base implementation to set cellPos and towerID
+    }
+
+    public override void Upgrade()
+    {
+        damage += 5; // Increase damage
+        Debug.Log("Ninja Tower upgraded! New damage: " + damage);
+    }
+
 }
