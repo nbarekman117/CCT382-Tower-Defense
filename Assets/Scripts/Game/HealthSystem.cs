@@ -1,42 +1,69 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.UI; // Required for working with UI components
+using UnityEngine.SceneManagement; // Required for scene management
 
 public class HealthSystem : MonoBehaviour
-{    
-    //The UI text for the health count
-    public Text txt_healthCount;
-    //The default value of the health count (used for init)
-    public int defaultHealthCount;
-    //Current health count
-    public int healthCount;    
+{
+    public int playerHealth = 10; // Starting health
+    public Text healthText;       // Reference to the Text UI element
 
-
-    //Init the health system (reset the health count)
+    // Initialize health system and UI
     public void Init()
     {
-        healthCount = defaultHealthCount;
-        txt_healthCount.text = healthCount.ToString();
+        UpdateHealthUI(); // Make sure UI starts with the correct health value
     }
 
-    //Lose health count
-    public void LoseHealth()
+    // Decrease the player's health and update the UI
+    public void DecreaseHealth(int amount)
     {
-        if (healthCount < 1)
-            return;
+        playerHealth -= amount;
+        UpdateHealthUI();
 
-        healthCount--;
-        txt_healthCount.text = healthCount.ToString();
-
-        CheckHealthCount();
-    }
-
-    //Check health count for losing
-    void CheckHealthCount()
-    {
-        if(healthCount<1)
+        if (playerHealth <= 0)
         {
-            Debug.Log("You lost");
-            //Call some reset values and stop the game from the manager
+            TriggerGameOver();
         }
+    }
+
+    // Update the health UI text
+    private void UpdateHealthUI()
+    {
+        if (healthText != null)
+        {
+            healthText.text = playerHealth.ToString(); // Update the UI Text
+        }
+        else
+        {
+            Debug.LogWarning("Health Text not assigned!");
+        }
+    }
+
+    // Trigger the Game Over screen by loading the Game Over scene
+    private void TriggerGameOver()
+    {
+        // Pause the game (optional)
+        Time.timeScale = 0f;
+
+        // Load the Game Over scene
+        SceneManager.LoadScene("Game over"); // Replace "GameOverScene" with the actual name of your Game Over scene
+    }
+
+    // Restart the game by reloading the gameplay scene
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;  // Unpause the game
+        playerHealth = 10;    // Reset health (or you can save the state if needed)
+        UpdateHealthUI();     // Reset the health UI
+        SceneManager.LoadScene("GameplayScene"); // Replace "GameplayScene" with the actual name of your gameplay scene
+    }
+
+    // Quit the game (in a built game, this will close the application)
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; // Stops the game if running in the Editor
+        #else
+            Application.Quit(); // Quits the game in a built application
+        #endif
     }
 }
