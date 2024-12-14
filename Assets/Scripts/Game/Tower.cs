@@ -7,6 +7,8 @@ public class Tower : MonoBehaviour
     public int health;
     public int cost;
     public int towerID; // Add this field to identify towers
+    public int upgradeCount = 0; // Track the number of upgrades
+    public const int maxUpgrades = 2; // Maximum number of upgrades allowed
 
     
     private Vector3Int cellPosition;
@@ -44,8 +46,16 @@ public class Tower : MonoBehaviour
     }
 
     // Make this method virtual
-    public virtual void Upgrade()
+    public virtual bool Upgrade()
     {
-        Debug.Log("Base Tower upgraded!");
+        if (upgradeCount >= maxUpgrades)
+        {
+            Debug.Log("Maximum upgrades reached!");
+            return false;
+        }
+
+        upgradeCount++;
+        Debug.Log("Base Tower upgraded! Current upgrade count: " + upgradeCount);
+        return true;
     }
 }

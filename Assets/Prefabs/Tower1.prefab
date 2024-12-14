@@ -185,9 +185,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   cost: 5
-  upgradeLevel: 0
-  upgradeCosts: 0000000000000000000000000000000000000000
-  upgradeDescriptions: []
+  towerID: 0
+  upgradeCount: 0
+  upgradeSprites: []
   incomeValue: 4
   interval: 5
   obj_coin: {fileID: 2469699606858658082}

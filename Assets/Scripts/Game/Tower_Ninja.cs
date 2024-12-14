@@ -41,10 +41,14 @@ public class Tower_Ninja : Tower
         base.Init(cellPos, id); // Call the base implementation to set cellPos and towerID
     }
 
-    public override void Upgrade()
+    public override bool Upgrade()
     {
+        if (!base.Upgrade()) return false; // Check if further upgrades are allowed
+
         damage += 5; // Increase damage
         Debug.Log("Ninja Tower upgraded! New damage: " + damage);
+        return true; // Indicate successful upgrade
     }
+
 
 }

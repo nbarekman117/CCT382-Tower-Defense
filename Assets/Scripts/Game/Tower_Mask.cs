@@ -12,9 +12,13 @@ public class Tower_Mask : Tower
         base.Init(cellPos, id); // Call the base implementation to set cellPos and towerID
     }
 
-    public override void Upgrade()
+    public override bool Upgrade()
     {
+        if (!base.Upgrade()) return false; // Check if further upgrades are allowed
+
         health += 10; // Increase health
         Debug.Log("Mask Tower upgraded! New health: " + health);
+        return true; // Indicate successful upgrade
     }
+
 }

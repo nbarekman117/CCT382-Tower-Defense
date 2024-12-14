@@ -47,9 +47,13 @@ public class Tower_Pink : Tower
         base.Init(cellPos, id); // Call the base implementation to set cellPos and towerID
     }
 
-    public override void Upgrade()
+    public override bool Upgrade()
     {
-        incomeValue += 5; // Increase income per interval
+        if (!base.Upgrade()) return false; // Check if further upgrades are allowed
+
+        incomeValue += 5; // Increase income
         Debug.Log("Pink Tower upgraded! New income: " + incomeValue);
+        return true; // Indicate successful upgrade
     }
+
 }

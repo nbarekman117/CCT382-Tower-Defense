@@ -115,7 +115,6 @@ public class Spawner : MonoBehaviour
         // Find the tower corresponding to the selected upgrade ID
         foreach (var tower in GameObject.FindObjectsOfType<Tower>())
         {
-            Debug.Log($"Checking tower with ID: {tower.towerID}"); // Add this for debugging
             if (tower.towerID == id)
             {
                 int upgradeCost = TowerCost(id);
@@ -123,22 +122,31 @@ public class Spawner : MonoBehaviour
                 // Check if the player has enough currency
                 if (GameManager.instance.currency.EnoughCurrency(upgradeCost))
                 {
-                    // Deduct the currency
-                    GameManager.instance.currency.Use(upgradeCost);
-
-                    // Upgrade the tower
-                    tower.Upgrade();
-                    Debug.Log($"Upgraded tower {id}.");
+                    // Attempt to upgrade the tower
+                    if (tower.Upgrade())
+                    {
+                        // Deduct the currency if the upgrade is successful
+                        GameManager.instance.currency.Use(upgradeCost);
+                        Debug.Log($"Upgraded tower {id}. Current upgrade count: {tower.upgradeCount}");
+                    }
+                    else
+                    {
+                        // Notify the player that the tower has reached the maximum upgrade level
+                        Debug.Log("Tower has already reached the maximum upgrade level.");
+                    }
                     return;
                 }
                 else
                 {
+                    // Notify the player about insufficient currency
                     Debug.Log("Not enough currency for upgrade.");
                     return;
                 }
             }
         }
 
+        // Notify if no tower matches the provided ID
         Debug.Log("No tower found for the given ID.");
     }
+
 }
