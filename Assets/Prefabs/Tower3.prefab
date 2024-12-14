@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 722602657
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 829ca5689264af945b30332a0f8a038e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1e884d430a35fb43b683900276955c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,11 @@ MonoBehaviour:
   cost: 4
   towerID: 0
   upgradeCount: 0
-  upgradeSprites: []
+  spriteRenderer: {fileID: 5689792790088162821}
+  sprites:
+  - {fileID: 21300000, guid: f1e884d430a35fb43b683900276955c1, type: 3}
+  - {fileID: 21300000, guid: 699f7ef8ee901c34da757458bffa8d91, type: 3}
+  - {fileID: 21300000, guid: a16415b9d6e87274d998611e2e22f07a, type: 3}
   damage: 2
   prefab_shootItem: {fileID: 1282590824706437793, guid: fe40418dc67bc9d45a10a7f220170031,
     type: 3}

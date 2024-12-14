@@ -10,7 +10,10 @@ public class Tower : MonoBehaviour
     public int upgradeCount = 0; // Track the number of upgrades
     public const int maxUpgrades = 2; // Maximum number of upgrades allowed
 
-    
+    // Add a reference to the sprite renderer and the sprites for upgrades
+    public SpriteRenderer spriteRenderer;
+    public List<Sprite> sprites; // Assign these in the Unity Inspector
+
     private Vector3Int cellPosition;
 
 
@@ -55,6 +58,13 @@ public class Tower : MonoBehaviour
         }
 
         upgradeCount++;
+
+        // Change sprite based on the upgrade level
+        if (upgradeCount < sprites.Count)
+        {
+            spriteRenderer.sprite = sprites[upgradeCount];
+        }
+
         Debug.Log("Base Tower upgraded! Current upgrade count: " + upgradeCount);
         return true;
     }

@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 722602657
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 547b24ffaf592934e9501988ab93b1b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 162707f4b1e1b9b4d9fb3d851a148033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +187,11 @@ MonoBehaviour:
   cost: 5
   towerID: 0
   upgradeCount: 0
-  upgradeSprites: []
+  spriteRenderer: {fileID: 7633570157440100176}
+  sprites:
+  - {fileID: 21300000, guid: 162707f4b1e1b9b4d9fb3d851a148033, type: 3}
+  - {fileID: 21300000, guid: 6fd6cafed3e4fd345aea5c77c3f55d96, type: 3}
+  - {fileID: 21300000, guid: 145d188ad910cf5418d1f58856c55ff3, type: 3}
   incomeValue: 4
   interval: 5
   obj_coin: {fileID: 2469699606858658082}
