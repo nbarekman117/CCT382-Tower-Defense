@@ -7367,12 +7367,13 @@ MonoBehaviour:
   prefabs:
   - {fileID: 5329431245111203146, guid: 31b6829ee1c0e4244815d79cd70889ba, type: 3}
   - {fileID: 6369914192126342118, guid: cc8d78a7121bd3045ae41b020cc66aa7, type: 3}
+  - {fileID: 6369914192126342118, guid: f86833fa915951e42be25b5675719d8a, type: 3}
   spawnPoints:
   - {fileID: 1878638720}
   - {fileID: 498073561}
   - {fileID: 499484217}
   - {fileID: 1232154033}
-  spawnInterval: 4
+  spawnInterval: 6
 --- !u!114 &1560833011
 MonoBehaviour:
   m_ObjectHideFlags: 0

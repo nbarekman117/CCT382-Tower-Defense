@@ -12,4 +12,15 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu"); // Replace "Menu" with the exact name of your Main Menu scene
     }
+
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        // Exit play mode in Unity Editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Quit the application
+        Application.Quit();
+#endif
+    }
 }
