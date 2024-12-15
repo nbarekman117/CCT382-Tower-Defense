@@ -4,7 +4,18 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    void Awake() { instance = this; }
+    void Awake() 
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     public Spawner spawner;
     public HealthSystem health;

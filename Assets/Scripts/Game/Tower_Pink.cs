@@ -4,37 +4,44 @@ using UnityEngine;
 public class Tower_Pink : Tower
 {
     //FIELDS
-    //Income value
-    public int incomeValue;
-    //Interval for income
-    public float interval;
-    //Coin image object
-    public GameObject obj_coin;
+    public int incomeValue; // Income value
+    public float interval; // Interval for income generation
+    public GameObject obj_coin; // Coin image object
 
+    [SerializeField]
+    private AudioClip coinSound; // Sound effect for receiving a coin
+    private AudioSource audioSource; // AudioSource to play the sound
 
     //METHODS
-    //Init
     protected override void Start()
     {
         Debug.Log("PINK");
+        audioSource = gameObject.AddComponent<AudioSource>(); // Add AudioSource component
+        audioSource.clip = coinSound; // Assign coin sound
+        audioSource.playOnAwake = false; // Ensure sound doesn't play on initialization
         StartCoroutine(Interval());
     }
-    //Interval IEnumerator
+
     IEnumerator Interval()
     {
         yield return new WaitForSeconds(interval);
-        //Trigger the income increase
-        IncreaseIncome();
-
+        IncreaseIncome(); // Trigger the income increase
         StartCoroutine(Interval());
     }
-    //Trigger Income Increase
+
     public void IncreaseIncome()
     {
         GameManager.instance.currency.Gain(incomeValue);
+
+        // Play the coin sound effect
+        if (audioSource && coinSound)
+        {
+            audioSource.Play();
+        }
+
         StartCoroutine(CoinIndication());
-    }  
-    //Show coin indication over the tower for short time (0.5 second)
+    }
+
     IEnumerator CoinIndication()
     {
         obj_coin.SetActive(true);
@@ -51,9 +58,8 @@ public class Tower_Pink : Tower
     {
         if (!base.Upgrade()) return false; // Check if further upgrades are allowed
 
-        incomeValue += 5; // Increase income
+        incomeValue += 1; // Increase income
         Debug.Log("Pink Tower upgraded! New income: " + incomeValue);
         return true; // Indicate successful upgrade
     }
-
 }

@@ -50,7 +50,8 @@ MonoBehaviour:
   graphics: {fileID: 1282590824886047894}
   damage: 0
   flySpeed: 2
-  rotateSpeed: 400
+  rotateSpeed: 507.3
+  hitSound: {fileID: 8300000, guid: 857bd50a42d78a24a9c54016df7de5b0, type: 3}
 --- !u!58 &-6129262399702447870
 CircleCollider2D:
   m_ObjectHideFlags: 0

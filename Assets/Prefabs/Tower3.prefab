@@ -111,6 +111,7 @@ MonoBehaviour:
   prefab_shootItem: {fileID: 1282590824706437793, guid: fe40418dc67bc9d45a10a7f220170031,
     type: 3}
   interval: 4
+  shootSound: {fileID: 8300000, guid: e08de1a85332ef6479c42b52a9829474, type: 3}
 --- !u!61 &6872826002522672958
 BoxCollider2D:
   m_ObjectHideFlags: 0
