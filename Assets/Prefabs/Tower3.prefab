@@ -95,23 +95,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411804659960363519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590cea659cf4b2c41a431e392f1879bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 473ee3901d376f44e8fa09569a2227e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 4
   cost: 4
-  towerID: 0
+  towerID: 2
   upgradeCount: 0
   spriteRenderer: {fileID: 5689792790088162821}
   sprites:
-  - {fileID: 21300000, guid: f1e884d430a35fb43b683900276955c1, type: 3}
+  - {fileID: 21300000, guid: 65cd44216e868ad4fb21438053480426, type: 3}
   - {fileID: 21300000, guid: 699f7ef8ee901c34da757458bffa8d91, type: 3}
   - {fileID: 21300000, guid: a16415b9d6e87274d998611e2e22f07a, type: 3}
   damage: 2
   prefab_shootItem: {fileID: 1282590824706437793, guid: fe40418dc67bc9d45a10a7f220170031,
     type: 3}
   interval: 4
-  shootSound: {fileID: 8300000, guid: e08de1a85332ef6479c42b52a9829474, type: 3}
 --- !u!61 &6872826002522672958
 BoxCollider2D:
   m_ObjectHideFlags: 0

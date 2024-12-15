@@ -97,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6369914192126342118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc4e8f304a61c148a1572a1c30dcd8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c728c2df2f50954eb1109391324e394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
@@ -105,7 +105,6 @@ MonoBehaviour:
   moveSpeed: 0.3
   animator: {fileID: 641715444348891610}
   attackInterval: 3
-  attackSound: {fileID: 8300000, guid: 78036ddb9e3348d43aea957d9d0a680c, type: 3}
 --- !u!61 &4689326034164648085
 BoxCollider2D:
   m_ObjectHideFlags: 0

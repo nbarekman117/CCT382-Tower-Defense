@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-
     void Start()
     {
         health.Init();
         currency.Init();
+        EnemySpawner.instance.StartSpawning(); // Trigger enemy spawning
         StartCoroutine(WaveStartDelay());
     }
 
