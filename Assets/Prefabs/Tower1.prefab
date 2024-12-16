@@ -193,7 +193,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6fd6cafed3e4fd345aea5c77c3f55d96, type: 3}
   - {fileID: 21300000, guid: 145d188ad910cf5418d1f58856c55ff3, type: 3}
   incomeValue: 2
-  interval: 5
+  interval: 4
   obj_coin: {fileID: 2469699606858658082}
   coinSound: {fileID: 8300000, guid: b05261dfaa74d984b842dba01cb4167a, type: 3}
 --- !u!61 &8678930387464495090

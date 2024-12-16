@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473ee3901d376f44e8fa09569a2227e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  cost: 4
+  health: 5
+  cost: 5
   towerID: 2
   upgradeCount: 0
   spriteRenderer: {fileID: 5689792790088162821}
@@ -110,7 +110,7 @@ MonoBehaviour:
   damage: 2
   prefab_shootItem: {fileID: 1282590824706437793, guid: fe40418dc67bc9d45a10a7f220170031,
     type: 3}
-  interval: 4
+  interval: 3
 --- !u!61 &6872826002522672958
 BoxCollider2D:
   m_ObjectHideFlags: 0
