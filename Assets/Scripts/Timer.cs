@@ -26,6 +26,8 @@ public class Timer : MonoBehaviour
 
     void LoadGameWinScene()
     {
-        SceneManager.LoadScene("Game win"); // Replace with your exact scene name
+        Debug.Log("Attempting to load Game win scene...");
+        SceneManager.LoadScene("Game win"); // Ensure name matches your scene
     }
+
 }

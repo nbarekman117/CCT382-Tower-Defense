@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Spawner spawner;
     public HealthSystem health;
     public CurrencySystem currency;
+    public List<Tower> activeTowers = new List<Tower>();
 
     void Awake()
     {

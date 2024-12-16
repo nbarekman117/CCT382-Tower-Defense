@@ -41,12 +41,19 @@ public class Tower : MonoBehaviour
         return false;
     }
     //Die
-    protected virtual void Die()
+    // Corrected: Removed `override` from Die()
+    protected void Die()
     {
         Debug.Log("Tower is dead");
         FindObjectOfType<Spawner>().RevertCellState(cellPosition);
+
+        // Remove from active towers list
+        GameManager.instance.activeTowers.Remove(this);
+
         Destroy(gameObject);
     }
+
+
 
     // Make this method virtual
     public virtual bool Upgrade()

@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     public Tilemap spawnTilemap;
     // Tile position
     private Vector3Int tilePos;
+    private int currentUpgradeIndex = -1; // Tracks the last upgraded tower
 
     void Update()
     {
@@ -87,10 +88,15 @@ public class Spawner : MonoBehaviour
     {
         GameObject tower = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
         tower.transform.position = position;
-        tower.GetComponent<Tower>().Init(cellPosition, spawnID); // Pass spawnID here
+        Tower towerComponent = tower.GetComponent<Tower>();
+        towerComponent.Init(cellPosition, spawnID);
+
+        // Ensure the tower is added to the list
+        GameManager.instance.activeTowers.Add(towerComponent);
 
         DeselectTowers();
     }
+
 
     public void RevertCellState(Vector3Int pos)
     {
@@ -118,48 +124,45 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void SelectUpgrade(int id)
+public void SelectUpgrade(int id)
+{
+    DeselectTowers();
+    towersUI[id].color = Color.white;
+
+    // Filter towers by the selected ID
+    List<Tower> towersToUpgrade = GameManager.instance.activeTowers
+        .FindAll(tower => tower.towerID == id);
+
+    if (towersToUpgrade.Count == 0)
     {
-        // Highlight the selected tower button for upgrade
-        DeselectTowers();
-        towersUI[id].color = Color.white;
-
-        // Find the tower corresponding to the selected upgrade ID
-        foreach (var tower in GameObject.FindObjectsOfType<Tower>())
-        {
-            if (tower.towerID == id)
-            {
-                int upgradeCost = TowerCost(id);
-
-                // Check if the player has enough currency
-                if (GameManager.instance.currency.EnoughCurrency(upgradeCost))
-                {
-                    // Attempt to upgrade the tower
-                    if (tower.Upgrade())
-                    {
-                        // Deduct the currency if the upgrade is successful
-                        GameManager.instance.currency.Use(upgradeCost);
-                        Debug.Log($"Upgraded tower {id}. Current upgrade count: {tower.upgradeCount}");
-                    }
-                    else
-                    {
-                        // Notify the player that the tower has reached the maximum upgrade level
-                        Debug.Log("Tower has already reached the maximum upgrade level.");
-                    }
-                    return;
-                }
-                else
-                {
-                    // Notify the player about insufficient currency
-                    Debug.Log("Not enough currency for upgrade.");
-                    return;
-                }
-            }
-        }
-
-        // Notify if no tower matches the provided ID
-        Debug.Log("No tower found for the given ID.");
+        Debug.Log($"No towers of type {id} available for upgrade.");
+        return;
     }
+
+    // Increment the index and wrap around using modulo
+    currentUpgradeIndex = (currentUpgradeIndex + 1) % towersToUpgrade.Count;
+
+    Tower towerToUpgrade = towersToUpgrade[currentUpgradeIndex];
+
+    // Attempt the upgrade
+    int upgradeCost = TowerCost(id);
+    if (GameManager.instance.currency.EnoughCurrency(upgradeCost))
+    {
+        if (towerToUpgrade.Upgrade())
+        {
+            GameManager.instance.currency.Use(upgradeCost);
+            Debug.Log($"Upgraded tower {id}. Current upgrade count: {towerToUpgrade.upgradeCount}");
+        }
+        else
+        {
+            Debug.Log($"Tower {id} has already reached the maximum upgrade level.");
+        }
+    }
+    else
+    {
+        Debug.Log("Not enough currency for upgrade.");
+    }
+}
 
     public void Init(Tilemap tilemap)
     {

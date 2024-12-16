@@ -7269,7 +7269,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -7513,7 +7513,7 @@ MonoBehaviour:
   waveDuration: 45
   wave1SpawnInterval: 5
   wave2SpawnInterval: 3.5
-  wave3SpawnInterval: 2
+  wave3SpawnInterval: 2.5
   waveText: {fileID: 1517800269}
   waveTextDuration: 3
 --- !u!114 &1560833011
@@ -7546,6 +7546,7 @@ MonoBehaviour:
   spawner: {fileID: 1560833014}
   health: {fileID: 1560833013}
   currency: {fileID: 1560833011}
+  activeTowers: []
 --- !u!114 &1560833013
 MonoBehaviour:
   m_ObjectHideFlags: 0
